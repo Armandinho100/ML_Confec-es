@@ -2,857 +2,787 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff9f7">
-  <meta name="description" content="Bolos artísticos sob medida, sabores especiais e pães caseiros artesanais. ML Confeitaria — feito com amor e carinho em São Luís, MA.">
-  <title>ML Confeitaria | Feito com amor e carinho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#34231f">
+  <meta name="description" content="ML Confeitaria — bolos artesanais, doces e celebrações feitas com delicadeza, sabor e personalidade.">
+  <title>ML Confeitaria — Feito para celebrar</title>
 
-  <!-- Tipografia editorial + sans-serif legível -->
+  <!-- Tipografia editorial: Cormorant Garamond + Manrope -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --cream: #fff9f7;
-      --pink: #fce8e8;
-      --pink-border: #f4c2c2;
-      --rose: #d97b84;
-      --rose-dark: #b95d68;
-      --chocolate: #5c331d;
-      --coffee: #3e2010;
-      --gold: #c59b5f;
-      --white: #fff;
-      --muted: #8c756b;
-      --shadow: 0 22px 60px rgba(83, 44, 28, .11);
-      --serif: "Playfair Display", Georgia, serif;
-      --sans: "DM Sans", Arial, sans-serif;
-      --container: 1160px;
+      --cocoa: #34231f;
+      --cocoa-soft: #503a33;
+      --cream: #f7f1e9;
+      --paper: #fcf9f4;
+      --champagne: #d9c2a1;
+      --rose: #b77c70;
+      --muted: #8d7d72;
+      --line: rgba(75, 52, 43, .16);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+      --shadow: 0 24px 70px rgba(52, 35, 31, .13);
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 94px; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--cream);
-      color: var(--chocolate);
+      color: var(--cocoa);
+      background: var(--paper);
       font-family: var(--sans);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     body.modal-open { overflow: hidden; }
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button, input, select, textarea { font: inherit; }
-    button { cursor: pointer; }
-    ::selection { background: #f4c2c2; color: var(--coffee); }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { background: var(--champagne); color: var(--cocoa); }
 
-    .container { width: min(var(--container), calc(100% - 44px)); margin-inline: auto; }
-    .eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      color: var(--rose-dark); font-size: .72rem; font-weight: 700;
-      letter-spacing: .19em; text-transform: uppercase;
+    .announcement {
+      padding: 9px 18px;
+      text-align: center;
+      color: #f8efe5;
+      background: var(--cocoa);
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
     }
-    .eyebrow::before { content: ""; width: 27px; height: 1px; background: var(--gold); }
-    .section-heading { max-width: 680px; margin: 0 auto 42px; text-align: center; }
-    .section-heading h2 {
-      margin: 13px 0 13px; color: var(--coffee);
-      font: 500 clamp(2.15rem, 4.4vw, 3.5rem)/1.12 var(--serif);
-      letter-spacing: -.035em;
+    .site-header {
+      position: absolute;
+      z-index: 20;
+      top: 35px;
+      left: 0;
+      width: 100%;
+      padding: 22px clamp(20px, 5vw, 76px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,.22);
     }
-    .section-heading p { margin: 0; color: var(--muted); line-height: 1.8; }
-    .script-note { color: var(--rose-dark); font: italic 1.12rem var(--serif); }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      min-height: 52px; padding: 0 25px; border: 1px solid transparent;
-      border-radius: 4px; font-size: .83rem; font-weight: 700;
-      letter-spacing: .035em; transition: transform .25s, box-shadow .25s, background .25s;
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img {
+      width: 48px; height: 48px; object-fit: cover;
+      border-radius: 50%; border: 1px solid rgba(255,255,255,.65);
     }
-    .btn:hover { transform: translateY(-3px); }
-    .btn-primary { background: var(--chocolate); color: white; box-shadow: 0 10px 24px #5c331d25; }
-    .btn-primary:hover { background: var(--coffee); box-shadow: 0 14px 28px #5c331d35; }
-    .btn-outline { border-color: var(--pink-border); color: var(--chocolate); background: rgba(255,255,255,.6); }
-    .btn-outline:hover { background: var(--pink); }
-    .btn-rose { background: var(--rose); color: white; }
-    .btn-rose:hover { background: var(--rose-dark); }
-    .text-link { color: var(--rose-dark); font-size: .84rem; font-weight: 700; }
-    .text-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .brand-name {
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: .9;
+      letter-spacing: .04em;
+    }
+    .brand-name small {
+      display: block; margin-top: 6px;
+      font: 8px var(--sans); letter-spacing: .25em; text-transform: uppercase;
+    }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 42px); }
+    .nav-links a {
+      font-size: 10px; letter-spacing: .13em; text-transform: uppercase;
+      opacity: .9; transition: opacity .25s;
+    }
+    .nav-links a:hover { opacity: .58; }
+    .nav-cta {
+      border: 1px solid rgba(255,255,255,.7);
+      padding: 13px 19px;
+      transition: background .3s, color .3s;
+    }
+    .nav-cta:hover { color: var(--cocoa); background: white; }
+    .menu-toggle { display: none; border: 0; color: white; background: none; font-size: 24px; }
 
-    /* Navegação */
-    .navbar {
-      position: fixed; z-index: 50; inset: 0 0 auto; height: 82px;
-      background: rgba(255,249,247,.83); backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid rgba(244,194,194,.45);
-      transition: box-shadow .3s, height .3s;
+    .hero {
+      min-height: 790px;
+      height: min(920px, 100svh);
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      overflow: hidden;
+      color: white;
+      background: #48332c;
     }
-    .navbar.scrolled { height: 72px; box-shadow: 0 8px 28px rgba(62,32,16,.07); }
-    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
-    .brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
-    .brand-mark {
-      display: grid; place-items: center; width: 42px; height: 42px;
-      border: 1px solid var(--gold); border-radius: 50%; color: var(--rose-dark);
-      font: 600 1.05rem var(--serif);
-    }
-    .brand-name { display: flex; flex-direction: column; line-height: 1.1; }
-    .brand-name strong { font: 600 1.23rem var(--serif); letter-spacing: .01em; }
-    .brand-name small { margin-top: 4px; color: var(--muted); font-size: .55rem; letter-spacing: .2em; text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: clamp(15px, 2.3vw, 31px); }
-    .nav-links a { color: #73594c; font-size: .76rem; font-weight: 600; transition: color .2s; }
-    .nav-links a:hover { color: var(--rose-dark); }
-    .nav-cta { min-height: 43px; padding-inline: 19px; font-size: .74rem; }
-    .menu-toggle { display: none; border: 0; background: transparent; color: var(--chocolate); font-size: 1.55rem; }
-
-    /* Hero */
-    .hero { position: relative; overflow: hidden; padding: 150px 0 92px; }
     .hero::before {
-      content: ""; position: absolute; width: 540px; height: 540px; right: -210px; top: 30px;
-      border-radius: 50%; background: radial-gradient(circle, #fce8e8 0%, rgba(252,232,232,0) 70%);
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(90deg, rgba(35,22,19,.84) 0%, rgba(35,22,19,.58) 43%, rgba(35,22,19,.08) 100%);
       pointer-events: none;
     }
-    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 62px; }
-    .hero-copy { position: relative; z-index: 1; padding: 15px 0 25px; }
-    .hero-kicker { margin-bottom: 22px; }
+    .hero-image {
+      position: absolute; inset: 0 0 0 38%;
+      background:
+        linear-gradient(0deg, rgba(30,20,17,.13), rgba(30,20,17,.13)),
+        url("bolo-do-mar.webp") center 43% / cover no-repeat;
+      transform: scale(1.02);
+      animation: heroReveal 1.3s ease both;
+    }
+    .hero-content {
+      z-index: 2; position: relative;
+      align-self: center;
+      padding: 150px 0 100px clamp(25px, 10vw, 150px);
+      max-width: 740px;
+    }
+    .eyebrow {
+      display: flex; align-items: center; gap: 13px;
+      font-size: 9px; letter-spacing: .25em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 35px; height: 1px; background: var(--champagne); }
+    h1, h2, h3, p { margin-top: 0; }
     .hero h1 {
-      max-width: 620px; margin: 0; color: var(--coffee);
-      font: 500 clamp(3rem, 5.7vw, 5.15rem)/1.05 var(--serif);
+      margin: 28px 0 22px;
+      font: 400 clamp(58px, 7.4vw, 108px)/.88 var(--serif);
       letter-spacing: -.045em;
+      max-width: 650px;
     }
-    .hero h1 em { color: var(--rose-dark); font-weight: 400; }
-    .hero-copy > p { max-width: 490px; margin: 24px 0 30px; color: #806b60; font-size: .98rem; line-height: 1.9; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero-meta { display: flex; align-items: center; gap: 22px; margin-top: 35px; color: var(--muted); font-size: .75rem; }
-    .hero-meta span { display: flex; align-items: center; gap: 8px; }
-    .hero-meta b { color: var(--gold); font-size: 1rem; }
-    .hero-visual { position: relative; max-width: 510px; justify-self: end; width: 100%; padding: 0 15px 20px 0; }
-    .hero-photo-wrap {
-      position: relative; overflow: hidden; height: 565px;
-      border-radius: 48% 48% 8px 8px / 35% 35% 8px 8px;
-      box-shadow: 22px 24px 0 #f4c2c255, var(--shadow);
-      background: var(--pink);
+    .hero h1 em { color: #e5cbb0; font-weight: 400; }
+    .hero-copy {
+      max-width: 390px; color: rgba(255,255,255,.78);
+      font-size: 12px; line-height: 2.05; letter-spacing: .025em;
     }
-    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero-actions { display: flex; align-items: center; gap: 25px; margin-top: 35px; flex-wrap: wrap; }
+    .button {
+      min-height: 51px; display: inline-flex; align-items: center; justify-content: center;
+      padding: 0 24px; border: 1px solid transparent; cursor: pointer;
+      font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+      transition: transform .3s, background .3s, color .3s, border-color .3s;
+    }
+    .button:hover { transform: translateY(-3px); }
+    .button-light { color: var(--cocoa); background: var(--cream); }
+    .button-light:hover { background: var(--champagne); }
+    .text-link {
+      display: inline-flex; gap: 10px; align-items: center;
+      padding-bottom: 7px; border-bottom: 1px solid rgba(255,255,255,.6);
+      font-size: 9px; letter-spacing: .15em; text-transform: uppercase;
+    }
+    .hero-index {
+      position: absolute; z-index: 2; right: 5.2%; bottom: 45px;
+      writing-mode: vertical-rl; color: rgba(255,255,255,.8);
+      font-size: 8px; letter-spacing: .25em; text-transform: uppercase;
+    }
     .hero-stamp {
-      position: absolute; top: 34px; left: -33px; width: 102px; height: 102px;
-      display: grid; place-items: center; border-radius: 50%; text-align: center;
-      background: var(--white); border: 1px solid var(--pink-border);
-      color: var(--rose-dark); font: italic .9rem/1.25 var(--serif);
-      transform: rotate(-10deg); box-shadow: 0 12px 30px #5c331d17;
+      position: absolute; z-index: 2; right: 13%; bottom: 13%;
+      width: 112px; height: 112px; border: 1px solid rgba(255,255,255,.65);
+      border-radius: 50%; display: grid; place-items: center; text-align: center;
+      color: white; font: italic 17px/1.05 var(--serif); transform: rotate(-12deg);
+      backdrop-filter: blur(3px);
     }
-    .floating-note {
-      position: absolute; right: -12px; bottom: 54px; display: flex; align-items: center; gap: 12px;
-      padding: 16px 20px; border-radius: 5px; background: white; box-shadow: var(--shadow);
-    }
-    .note-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--pink); color: var(--rose-dark); }
-    .floating-note strong { display: block; color: var(--coffee); font: 600 1rem var(--serif); }
-    .floating-note small { display: block; margin-top: 3px; color: var(--muted); font-size: .66rem; }
+    .hero-stamp span { display: block; font: 7px var(--sans); letter-spacing: .18em; text-transform: uppercase; }
 
-    /* Vitrine */
-    .gallery-section { padding: 92px 0 105px; background: #fff; }
-    .filters { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin: -10px 0 35px; }
-    .filter-btn {
-      padding: 11px 18px; border: 1px solid #f0d9d5; border-radius: 30px;
-      background: white; color: #806b60; font-size: .75rem; font-weight: 600;
-      transition: .25s;
+    .intro {
+      padding: 125px 8vw 115px;
+      display: grid; grid-template-columns: .8fr 1.2fr; gap: 10vw; align-items: start;
+      background: var(--cream);
     }
-    .filter-btn:hover, .filter-btn.active { background: var(--chocolate); color: white; border-color: var(--chocolate); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
-    .cake-card {
-      overflow: hidden; background: var(--cream); border: 1px solid #f3e5e0;
-      border-radius: 7px; transition: transform .35s, box-shadow .35s;
+    .section-kicker { color: var(--rose); font-size: 9px; letter-spacing: .23em; text-transform: uppercase; }
+    .intro h2, .section-heading h2, .sizes-copy h2, .quote-copy h2 {
+      font: 400 clamp(43px, 5.3vw, 70px)/.96 var(--serif);
+      letter-spacing: -.035em;
     }
-    .cake-card:hover { transform: translateY(-7px); box-shadow: 0 20px 40px #5c331d16; }
-    .cake-card[hidden] { display: none; }
-    .cake-image { position: relative; overflow: hidden; height: 315px; background: var(--pink); cursor: zoom-in; }
-    .cake-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
-    .cake-card:hover .cake-image img { transform: scale(1.055); }
-    .image-hint {
-      position: absolute; right: 14px; bottom: 14px; width: 38px; height: 38px;
-      display: grid; place-items: center; border-radius: 50%; color: var(--chocolate);
-      background: rgba(255,255,255,.9); opacity: 0; transform: translateY(7px); transition: .25s;
+    .intro h2 em, .section-heading h2 em, .sizes-copy h2 em, .quote-copy h2 em { color: var(--rose); }
+    .intro-copy { max-width: 570px; padding-top: 22px; }
+    .intro-copy p { color: #78685e; font-size: 12px; line-height: 2.1; }
+    .signature { margin-top: 27px; color: var(--rose); font: italic 27px var(--serif); }
+
+    .collection { padding: 120px 7vw 130px; }
+    .section-heading {
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 30px; margin: 0 auto 55px; max-width: 1300px;
     }
-    .cake-card:hover .image-hint { opacity: 1; transform: translateY(0); }
-    .cake-info { padding: 20px 21px 22px; }
-    .cake-category { color: var(--rose-dark); font-size: .63rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-    .cake-info h3 { margin: 8px 0 7px; color: var(--coffee); font: 500 1.42rem var(--serif); }
-    .cake-info p { min-height: 43px; margin: 0 0 15px; color: var(--muted); font-size: .79rem; line-height: 1.65; }
-    .gallery-foot { margin-top: 34px; text-align: center; color: var(--muted); font-size: .8rem; }
-
-    /* Parallax */
-    .parallax {
-      position: relative; min-height: 405px; display: grid; place-items: center; overflow: hidden;
-      background: linear-gradient(rgba(48,25,15,.74), rgba(48,25,15,.78)), url("bolo-morango.webp") center 48% / cover fixed;
-      color: white; text-align: center;
+    .section-heading h2 { margin: 15px 0 0; }
+    .section-heading p {
+      max-width: 270px; margin: 0 0 7px; color: var(--muted);
+      font-size: 10px; line-height: 1.9;
     }
-    .parallax-content { position: relative; z-index: 1; max-width: 790px; padding: 70px 22px; }
-    .parallax .eyebrow { color: #f2d6b2; }
-    .parallax h2 { margin: 19px 0 16px; font: 500 clamp(2.2rem, 4.5vw, 3.7rem)/1.15 var(--serif); }
-    .parallax p { max-width: 650px; margin: 0 auto; color: #f5e8df; font-size: .91rem; line-height: 1.9; }
-    .parallax .script-note { display: block; margin-top: 22px; color: #f2d6b2; }
+    .gallery {
+      max-width: 1300px; margin: auto;
+      display: grid; grid-template-columns: 1.1fr .82fr 1fr;
+      grid-template-rows: 265px 90px 265px;
+      gap: 17px;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; cursor: pointer;
+      background: #e7d9ca; isolation: isolate;
+    }
+    .gallery-item:nth-child(1) { grid-column: 1; grid-row: 1 / 3; border-radius: 2px 2px 90px 2px; }
+    .gallery-item:nth-child(2) { grid-column: 2; grid-row: 1; border-radius: 90px 2px 2px 2px; }
+    .gallery-item:nth-child(3) { grid-column: 3; grid-row: 1 / 3; border-radius: 2px 2px 2px 90px; }
+    .gallery-item:nth-child(4) { grid-column: 1; grid-row: 3; border-radius: 2px 80px 2px 2px; }
+    .gallery-item:nth-child(5) { grid-column: 2; grid-row: 2 / 4; border-radius: 2px 2px 85px 2px; }
+    .gallery-item:nth-child(6) { grid-column: 3; grid-row: 3; border-radius: 80px 2px 2px 2px; }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .5s;
+    }
+    .gallery-item:hover img { transform: scale(1.075); filter: saturate(1.08); }
+    .gallery-item::after {
+      content: ""; position: absolute; inset: 35% 0 0;
+      background: linear-gradient(transparent, rgba(34,22,18,.72));
+      opacity: .85; transition: opacity .35s;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-label {
+      position: absolute; z-index: 2; left: 22px; right: 18px; bottom: 19px;
+      color: white; display: flex; align-items: end; justify-content: space-between; gap: 10px;
+    }
+    .gallery-label strong { display: block; font: 500 24px var(--serif); }
+    .gallery-label small { display: block; margin-top: 3px; font-size: 8px; letter-spacing: .16em; text-transform: uppercase; opacity: .82; }
+    .gallery-label span { font-size: 19px; font-weight: 300; }
+    .gallery-note {
+      max-width: 1300px; margin: 24px auto 0; display: flex; justify-content: space-between;
+      color: var(--muted); font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+    }
 
-    /* Sabores */
-    .flavors-section { padding: 105px 0; }
-    .flavor-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 72px; }
-    .flavor-photo { position: relative; height: 590px; padding: 0 18px 18px 0; }
-    .flavor-photo::after { content: ""; position: absolute; inset: 22px 0 0 22px; border: 1px solid var(--gold); z-index: -1; }
-    .flavor-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; box-shadow: var(--shadow); }
-    .flavor-copy h2 { margin: 12px 0 13px; font: 500 clamp(2.25rem, 4vw, 3.3rem)/1.12 var(--serif); color: var(--coffee); }
-    .flavor-copy > p { margin: 0 0 27px; color: var(--muted); font-size: .88rem; line-height: 1.85; }
-    .flavor-lists { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
-    .flavor-list { padding-top: 18px; border-top: 1px solid var(--pink-border); }
-    .flavor-list h3 { margin: 0 0 13px; color: var(--rose-dark); font: 600 1.25rem var(--serif); }
-    .flavor-list ul { margin: 0; padding: 0; list-style: none; }
-    .flavor-list li { position: relative; margin: 10px 0; padding-left: 17px; color: #73594c; font-size: .78rem; }
-    .flavor-list li::before { content: "✦"; position: absolute; left: 0; color: var(--gold); font-size: .65rem; }
-    .sizes { margin-top: 34px; padding: 22px; border-radius: 6px; background: var(--pink); }
-    .sizes h3 { margin: 0 0 16px; font: 500 1.35rem var(--serif); color: var(--coffee); }
-    .size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
-    .size-item { padding: 13px 8px; background: rgba(255,255,255,.72); border-radius: 4px; text-align: center; }
-    .size-item strong { display: block; color: var(--rose-dark); font: 600 1.45rem var(--serif); }
-    .size-item span { display: block; margin-top: 4px; color: #806b60; font-size: .66rem; line-height: 1.4; }
+    .details-band {
+      display: grid; grid-template-columns: 1fr 1fr; min-height: 520px;
+      background: var(--cocoa); color: var(--cream);
+    }
+    .details-photo { min-height: 520px; overflow: hidden; }
+    .details-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .details-content { align-self: center; padding: 80px clamp(35px, 8vw, 120px); }
+    .details-content .section-kicker { color: var(--champagne); }
+    .details-content h2 { margin: 20px 0 20px; font: 400 clamp(42px, 5vw, 65px)/.96 var(--serif); }
+    .details-content h2 em { color: var(--champagne); }
+    .details-content p { max-width: 420px; color: rgba(255,255,255,.65); font-size: 11px; line-height: 2; }
+    .detail-list { list-style: none; padding: 18px 0 0; margin: 25px 0 0; border-top: 1px solid rgba(255,255,255,.2); }
+    .detail-list li { padding: 13px 0; display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid rgba(255,255,255,.13); font-size: 10px; letter-spacing: .04em; }
+    .detail-list span:last-child { color: var(--champagne); font-family: var(--serif); font-size: 18px; font-style: italic; }
 
-    /* Depoimento */
-    .testimonial-section { padding: 90px 0 100px; background: #fff; }
-    .testimonial-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 80px; max-width: 950px; margin: auto; }
-    .feedback-frame { position: relative; padding: 13px; background: var(--pink); border: 1px solid var(--pink-border); box-shadow: var(--shadow); transform: rotate(-2deg); }
-    .feedback-frame img { width: 100%; max-height: 390px; object-fit: contain; background: white; }
-    .feedback-caption { margin-top: 13px; text-align: center; color: var(--muted); font: italic .9rem var(--serif); }
-    .testimonial-copy .stars { color: var(--gold); font-size: 1.2rem; letter-spacing: .15em; }
-    .testimonial-copy blockquote { margin: 18px 0 23px; color: var(--coffee); font: 500 clamp(1.6rem, 3vw, 2.4rem)/1.35 var(--serif); }
-    .testimonial-copy p { color: var(--muted); font-size: .83rem; line-height: 1.8; }
-    .client-signature { display: flex; align-items: center; gap: 12px; margin-top: 25px; }
-    .client-avatar { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--pink); color: var(--rose-dark); font: 600 1.1rem var(--serif); }
-    .client-signature strong { display: block; color: var(--chocolate); font-size: .8rem; }
-    .client-signature small { display: block; margin-top: 3px; color: var(--muted); font-size: .68rem; }
+    .sizes {
+      padding: 125px 8vw; background: #eee5da;
+      display: grid; grid-template-columns: .9fr 1.1fr; gap: 9vw; align-items: center;
+    }
+    .sizes-copy h2 { margin: 17px 0 20px; }
+    .sizes-copy p { max-width: 410px; color: #78685e; font-size: 11px; line-height: 2; }
+    .size-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .size-card {
+      padding: 25px 24px; background: rgba(255,255,255,.54);
+      border: 1px solid rgba(87,62,51,.13); transition: transform .3s, background .3s;
+    }
+    .size-card:hover { transform: translateY(-5px); background: #fffaf4; }
+    .size-card .number { color: var(--rose); font: italic 34px var(--serif); }
+    .size-card h3 { margin: 7px 0 8px; font: 500 23px var(--serif); }
+    .size-card p { margin: 0; color: var(--muted); font-size: 9px; line-height: 1.8; }
+    .size-footnote { grid-column: 1 / -1; margin: 5px 0 0; color: var(--muted); font-size: 9px; line-height: 1.8; }
 
-    /* Orçamento */
-    .quote-section { position: relative; overflow: hidden; padding: 105px 0; background: var(--pink); }
-    .quote-section::before, .quote-section::after { content: "✿"; position: absolute; color: #d97b841c; font-size: 17rem; line-height: 1; pointer-events: none; }
-    .quote-section::before { top: -50px; left: -60px; transform: rotate(-20deg); }
-    .quote-section::after { right: -50px; bottom: -80px; transform: rotate(25deg); }
-    .quote-grid { position: relative; z-index: 1; display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
-    .quote-intro { padding-top: 24px; }
-    .quote-intro h2 { margin: 15px 0; color: var(--coffee); font: 500 clamp(2.4rem, 4vw, 3.5rem)/1.12 var(--serif); }
-    .quote-intro p { color: #806b60; font-size: .88rem; line-height: 1.9; }
-    .contact-detail { display: flex; align-items: center; gap: 12px; margin-top: 22px; color: var(--chocolate); font-size: .8rem; }
-    .contact-detail span { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 50%; background: white; color: var(--rose-dark); }
-    .quote-form { padding: 34px; border: 1px solid #f2d5d1; border-radius: 7px; background: white; box-shadow: 0 20px 55px #5c331d12; }
-    .form-heading { margin-bottom: 25px; }
-    .form-heading h3 { margin: 0 0 7px; color: var(--coffee); font: 500 1.8rem var(--serif); }
-    .form-heading p { margin: 0; color: var(--muted); font-size: .76rem; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
-    .field { display: flex; flex-direction: column; gap: 7px; }
+    .extras {
+      padding: 105px 7vw; display: grid; grid-template-columns: .75fr 1.25fr;
+      gap: 8vw; align-items: center; background: var(--paper);
+    }
+    .extras h2 { margin: 15px 0; font: 400 clamp(42px, 4.5vw, 60px)/.98 var(--serif); }
+    .extras h2 em { color: var(--rose); }
+    .extras p { max-width: 340px; color: var(--muted); font-size: 11px; line-height: 2; }
+    .extras-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .extra-item { position: relative; height: 290px; overflow: hidden; }
+    .extra-item:first-child { margin-top: 42px; border-radius: 90px 2px 2px 2px; }
+    .extra-item:last-child { border-radius: 2px 2px 90px 2px; }
+    .extra-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
+    .extra-item:hover img { transform: scale(1.06); }
+    .extra-caption { margin-top: 12px; font: 500 22px var(--serif); }
+
+    .testimonial {
+      position: relative; padding: 110px 8vw; background: #e4d4c5;
+      display: grid; grid-template-columns: .8fr 1.2fr; gap: 9vw; align-items: center;
+    }
+    .feedback-image { max-width: 430px; max-height: 420px; overflow: hidden; box-shadow: var(--shadow); transform: rotate(-2deg); }
+    .feedback-image img { width: 100%; height: 100%; object-fit: contain; background: white; }
+    .quote-copy h2 { margin: 15px 0 22px; }
+    .quote-copy p { max-width: 490px; color: #78685e; font-size: 11px; line-height: 2; }
+    .quote-mark { color: var(--rose); font: 80px/.6 var(--serif); }
+    .quote-signature { margin-top: 28px; font: italic 24px var(--serif); color: var(--rose); }
+
+    .order {
+      padding: 125px 7vw 130px; background: var(--cream);
+    }
+    .order-wrap { max-width: 1120px; margin: auto; display: grid; grid-template-columns: .8fr 1.2fr; gap: 9vw; }
+    .order-intro h2 { margin: 17px 0 20px; font: 400 clamp(45px, 5vw, 67px)/.95 var(--serif); }
+    .order-intro h2 em { color: var(--rose); }
+    .order-intro p { max-width: 330px; color: var(--muted); font-size: 11px; line-height: 2; }
+    .contact-note { margin-top: 35px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; line-height: 2; }
+    .order-form { display: grid; grid-template-columns: 1fr 1fr; gap: 19px 15px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
     .field.full { grid-column: 1 / -1; }
-    .field label { color: #654a3d; font-size: .72rem; font-weight: 700; }
+    .field label { font-size: 8px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
     .field input, .field select, .field textarea {
-      width: 100%; min-height: 47px; padding: 12px 13px; border: 1px solid #eadbd5;
-      border-radius: 3px; outline: none; color: var(--chocolate); background: #fffdfc;
-      font-size: .78rem; transition: border .2s, box-shadow .2s;
+      width: 100%; border: 0; border-bottom: 1px solid rgba(75,52,43,.28);
+      border-radius: 0; outline: 0; padding: 12px 2px;
+      color: var(--cocoa); background: transparent; font-size: 11px;
+      transition: border-color .25s;
     }
-    .field textarea { min-height: 105px; resize: vertical; }
-    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 3px #d97b841a; }
-    .field input::placeholder, .field textarea::placeholder { color: #b5a39a; }
-    .form-submit { width: 100%; margin-top: 20px; border: 0; }
-    .form-privacy { margin: 12px 0 0; color: #9b8980; font-size: .65rem; text-align: center; line-height: 1.6; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--rose); }
+    .field textarea { min-height: 75px; resize: vertical; }
+    .field input::placeholder, .field textarea::placeholder { color: #aa9a8f; }
+    .form-submit { grid-column: 1 / -1; justify-self: start; margin-top: 9px; }
+    .button-dark { color: white; background: var(--cocoa); }
+    .button-dark:hover { background: var(--rose); }
+    .form-feedback { grid-column: 1 / -1; min-height: 16px; color: #8b5147; font-size: 10px; }
 
-    /* Rodapé */
-    footer { padding: 58px 0 23px; background: var(--coffee); color: #f8eee8; }
-    .footer-main { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 55px; padding-bottom: 42px; }
-    .footer-brand .brand-mark { border-color: #c59b5f; color: #f0c7c2; }
-    .footer-brand .brand-name strong { color: white; }
-    .footer-brand .brand-name small { color: #cbb7aa; }
-    .footer-brand p { max-width: 280px; margin: 18px 0 0; color: #cbb7aa; font: italic 1.05rem var(--serif); }
-    .footer-col h3 { margin: 0 0 17px; color: #e9c99c; font: 500 1.2rem var(--serif); }
-    .footer-col p, .footer-col a { display: block; margin: 10px 0; color: #d7c6bb; font-size: .76rem; line-height: 1.7; }
-    .footer-col a:hover { color: white; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 18px; padding-top: 20px; border-top: 1px solid #ffffff20; color: #a99386; font-size: .65rem; }
-    .developer-credit { display: inline-flex; align-items: center; gap: 9px; }
-    .developer-credit a { color: #c6ada0; transition: color .2s; }
-    .developer-credit a:hover { color: white; }
-    .developer-credit .dev-wa { display: inline-grid; place-items: center; width: 23px; height: 23px; border: 1px solid #8e7567; border-radius: 50%; font-size: .72rem; }
-
-    /* WhatsApp flutuante */
-    .whatsapp-float {
-      position: fixed; z-index: 45; right: 25px; bottom: 24px; width: 59px; height: 59px;
-      display: grid; place-items: center; border-radius: 50%; background: #25d366; color: white;
-      box-shadow: 0 8px 25px #147b3c55; font-size: 1.65rem; transition: transform .2s;
-      animation: pulse 2.5s infinite;
+    footer {
+      padding: 55px 7vw 28px; color: var(--cream); background: #281b18;
     }
-    .whatsapp-float:hover { transform: translateY(-4px) scale(1.04); }
-    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 #25d36655, 0 8px 25px #147b3c55; } 55% { box-shadow: 0 0 0 12px #25d36600, 0 8px 25px #147b3c55; } }
+    .footer-top { display: flex; align-items: start; justify-content: space-between; gap: 30px; padding-bottom: 45px; }
+    .footer-brand { font: 500 36px var(--serif); }
+    .footer-brand small { display: block; margin-top: 5px; font: 8px var(--sans); letter-spacing: .23em; text-transform: uppercase; }
+    .footer-message { max-width: 250px; color: rgba(255,255,255,.56); font-size: 10px; line-height: 1.9; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.78); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 15px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.4); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
 
-    /* Lightbox */
-    .lightbox {
-      position: fixed; z-index: 100; inset: 0; display: grid; place-items: center;
-      padding: 22px; background: rgba(35,18,11,.82); backdrop-filter: blur(8px);
-      opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s;
+    .modal {
+      position: fixed; z-index: 100; inset: 0; display: none; align-items: center; justify-content: center;
+      padding: 22px; background: rgba(28,19,16,.88); backdrop-filter: blur(8px);
     }
-    .lightbox.open { opacity: 1; visibility: visible; }
-    .modal-panel {
+    .modal.open { display: flex; animation: fadeIn .25s ease; }
+    .modal-box {
       position: relative; display: grid; grid-template-columns: 1.05fr .95fr;
-      width: min(900px, 100%); max-height: min(680px, 92vh); overflow: auto;
-      border-radius: 7px; background: var(--cream); box-shadow: 0 30px 90px #0005;
-      transform: translateY(18px) scale(.985); transition: transform .25s;
+      width: min(920px, 100%); max-height: min(680px, 90vh);
+      overflow: hidden; background: var(--paper); box-shadow: 0 25px 90px rgba(0,0,0,.3);
     }
-    .lightbox.open .modal-panel { transform: translateY(0) scale(1); }
-    .modal-image { min-height: 440px; background: var(--pink); }
+    .modal-image { min-height: 420px; background: #e6d7c8; }
     .modal-image img { width: 100%; height: 100%; object-fit: cover; }
-    .modal-copy { display: flex; flex-direction: column; justify-content: center; padding: 45px 38px; }
-    .modal-copy h3 { margin: 10px 0; color: var(--coffee); font: 500 2.1rem/1.15 var(--serif); }
-    .modal-copy p { margin: 0 0 25px; color: var(--muted); font-size: .84rem; line-height: 1.8; }
+    .modal-info { align-self: center; padding: 50px; }
+    .modal-info h3 { margin: 13px 0; font: 500 42px/.95 var(--serif); }
+    .modal-info p { color: var(--muted); font-size: 11px; line-height: 2; }
     .modal-close {
-      position: absolute; z-index: 2; top: 13px; right: 13px; width: 39px; height: 39px;
-      border: 0; border-radius: 50%; background: white; color: var(--chocolate); font-size: 1.3rem;
-      box-shadow: 0 4px 15px #0002;
+      position: absolute; z-index: 2; top: 14px; right: 14px; width: 38px; height: 38px;
+      border: 0; border-radius: 50%; color: var(--cocoa); background: rgba(255,255,255,.9);
+      cursor: pointer; font-size: 22px;
     }
-
-    /* Scroll reveal */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: .1s; }
-    .reveal-delay-2 { transition-delay: .2s; }
-    .reveal-delay-3 { transition-delay: .3s; }
-
-    @media (max-width: 980px) {
-      .nav-links { gap: 15px; }
-      .nav-links a { font-size: .7rem; }
-      .hero-grid { gap: 35px; }
-      .hero-photo-wrap { height: 490px; }
-      .flavor-grid { gap: 45px; }
-      .quote-grid { gap: 40px; }
-      .testimonial-grid { gap: 55px; }
+    .whatsapp-float {
+      position: fixed; z-index: 30; right: 24px; bottom: 24px; width: 56px; height: 56px;
+      display: grid; place-items: center; border-radius: 50%; color: white; background: #477b59;
+      box-shadow: 0 8px 28px rgba(28,65,40,.25); transition: transform .3s, box-shadow .3s;
     }
-    @media (max-width: 760px) {
-      html { scroll-padding-top: 76px; }
-      .container { width: min(100% - 34px, var(--container)); }
-      .navbar { height: 72px; }
-      .brand-mark { width: 38px; height: 38px; }
-      .brand-name strong { font-size: 1.1rem; }
-      .menu-toggle { display: block; margin-left: auto; }
-      .nav-cta { display: none; }
+    .whatsapp-float:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 12px 35px rgba(28,65,40,.35); }
+    .whatsapp-float svg { width: 24px; height: 24px; fill: currentColor; }
+
+    @keyframes heroReveal { from { opacity: .45; transform: scale(1.08); } to { opacity: 1; transform: scale(1.02); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    @media (max-width: 900px) {
+      .site-header { padding-inline: 25px; }
+      .nav-links { gap: 17px; }
+      .nav-links a { font-size: 8px; }
+      .hero { min-height: 720px; }
+      .hero-content { padding-left: 7vw; }
+      .intro, .sizes, .extras, .testimonial, .order-wrap { gap: 6vw; }
+      .gallery { grid-template-rows: 220px 75px 220px; }
+      .details-content { padding-inline: 6vw; }
+      .extra-item { height: 230px; }
+    }
+    @media (max-width: 650px) {
+      .announcement { font-size: 8px; letter-spacing: .13em; }
+      .site-header { top: 32px; padding: 15px 20px; }
+      .brand img { width: 41px; height: 41px; }
+      .brand-name { font-size: 22px; }
+      .menu-toggle { display: block; position: relative; z-index: 3; }
       .nav-links {
-        position: absolute; top: 71px; left: 0; right: 0; display: flex; flex-direction: column;
-        align-items: stretch; gap: 0; padding: 9px 22px 17px; background: rgba(255,249,247,.98);
-        border-bottom: 1px solid var(--pink-border); box-shadow: 0 15px 25px #5c331d10;
-        opacity: 0; visibility: hidden; transform: translateY(-8px); transition: .2s;
+        display: none; position: absolute; top: 70px; left: 0; right: 0;
+        padding: 24px; background: rgba(45,30,26,.97);
+        flex-direction: column; align-items: stretch; gap: 22px;
       }
-      .nav-links.open { opacity: 1; visibility: visible; transform: translateY(0); }
-      .nav-links a { padding: 13px 3px; border-bottom: 1px solid #f4e7e3; font-size: .82rem; }
-      .hero { padding: 119px 0 70px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 38px; }
-      .hero-copy { text-align: center; }
-      .hero-kicker { justify-content: center; }
-      .hero h1 { margin-inline: auto; font-size: clamp(2.85rem, 11vw, 4.4rem); }
-      .hero-copy > p { margin-inline: auto; font-size: .9rem; }
-      .hero-actions, .hero-meta { justify-content: center; }
-      .hero-meta { flex-wrap: wrap; gap: 12px 20px; }
-      .hero-visual { justify-self: center; max-width: 440px; padding-left: 10px; }
-      .hero-photo-wrap { height: min(112vw, 510px); }
-      .hero-stamp { left: -5px; width: 85px; height: 85px; font-size: .78rem; }
-      .floating-note { right: -3px; bottom: 37px; padding: 12px 14px; }
-      .gallery-section, .flavors-section, .testimonial-section, .quote-section { padding: 76px 0; }
-      .section-heading { margin-bottom: 30px; }
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-      .cake-image { height: 245px; }
-      .cake-info { padding: 16px; }
-      .cake-info h3 { font-size: 1.2rem; }
-      .cake-info p { font-size: .72rem; }
-      .parallax { min-height: 360px; background-attachment: scroll; }
-      .flavor-grid { grid-template-columns: 1fr; gap: 38px; }
-      .flavor-photo { height: min(110vw, 510px); max-width: 520px; width: 100%; margin: auto; }
-      .flavor-copy { max-width: 600px; margin: auto; }
-      .testimonial-grid { grid-template-columns: 1fr; gap: 38px; max-width: 560px; }
-      .feedback-frame { max-width: 350px; margin: auto; }
-      .testimonial-copy { text-align: center; }
-      .client-signature { justify-content: center; }
-      .quote-grid { grid-template-columns: 1fr; gap: 28px; }
-      .quote-intro { text-align: center; padding: 0; }
-      .contact-detail { justify-content: center; }
-      .quote-form { padding: 25px 20px; }
-      .footer-main { grid-template-columns: 1fr 1fr; gap: 35px 25px; }
-      .footer-brand { grid-column: 1 / -1; }
-    }
-    @media (max-width: 480px) {
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .hero-actions .btn { width: 100%; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .cake-image { height: 320px; }
-      .filters { gap: 7px; }
-      .filter-btn { padding: 10px 13px; font-size: .68rem; }
-      .flavor-lists { gap: 17px; }
-      .flavor-list li { font-size: .73rem; }
-      .size-grid { gap: 6px; }
-      .size-item strong { font-size: 1.2rem; }
-      .size-item span { font-size: .6rem; }
-      .form-grid { grid-template-columns: 1fr; }
-      .field.full { grid-column: auto; }
-      .footer-main { grid-template-columns: 1fr; gap: 25px; }
-      .footer-brand { grid-column: auto; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      .whatsapp-float { right: 16px; bottom: 16px; width: 54px; height: 54px; }
-      .modal-panel { grid-template-columns: 1fr; max-height: 92vh; }
-      .modal-image { min-height: 270px; max-height: 42vh; }
-      .modal-copy { padding: 25px 23px 28px; }
-      .modal-copy h3 { font-size: 1.7rem; }
+      .nav-links.active { display: flex; }
+      .nav-links a { font-size: 10px; }
+      .nav-cta { text-align: center; }
+      .hero { min-height: 760px; height: 94svh; display: block; }
+      .hero-image { inset: 0; background-position: 58% center; }
+      .hero::before { background: linear-gradient(90deg, rgba(35,22,19,.79), rgba(35,22,19,.27)), linear-gradient(0deg, rgba(35,22,19,.48), transparent 75%); }
+      .hero-content { padding: 190px 25px 90px; }
+      .hero h1 { font-size: clamp(59px, 16vw, 86px); max-width: 430px; }
+      .hero-copy { max-width: 310px; font-size: 11px; }
+      .hero-stamp { width: 84px; height: 84px; right: 8%; bottom: 8%; font-size: 14px; }
+      .hero-index { right: 18px; bottom: 25px; font-size: 7px; }
+      .intro { padding: 80px 25px; grid-template-columns: 1fr; gap: 10px; }
+      .intro h2, .section-heading h2, .sizes-copy h2, .quote-copy h2 { font-size: 51px; }
+      .intro-copy { padding-top: 0; }
+      .collection { padding: 82px 20px 90px; }
+      .section-heading { display: block; margin-bottom: 32px; }
+      .section-heading p { margin-top: 18px; }
+      .gallery {
+        grid-template-columns: 1fr 1fr; grid-template-rows: 230px 170px 220px 175px;
+        gap: 10px;
+      }
+      .gallery-item:nth-child(1) { grid-column: 1 / 3; grid-row: 1; border-radius: 2px 2px 60px 2px; }
+      .gallery-item:nth-child(2) { grid-column: 1; grid-row: 2; border-radius: 55px 2px 2px 2px; }
+      .gallery-item:nth-child(3) { grid-column: 2; grid-row: 2 / 4; border-radius: 2px 2px 2px 55px; }
+      .gallery-item:nth-child(4) { grid-column: 1; grid-row: 3; border-radius: 2px 50px 2px 2px; }
+      .gallery-item:nth-child(5) { grid-column: 1; grid-row: 4; border-radius: 2px 2px 55px 2px; }
+      .gallery-item:nth-child(6) { grid-column: 2; grid-row: 4; border-radius: 50px 2px 2px 2px; }
+      .gallery-label { left: 12px; bottom: 12px; }
+      .gallery-label strong { font-size: 19px; }
+      .gallery-label small { font-size: 7px; }
+      .gallery-label span { font-size: 15px; }
+      .gallery-note { font-size: 7px; line-height: 1.8; }
+      .details-band { grid-template-columns: 1fr; }
+      .details-photo { min-height: 330px; max-height: 390px; }
+      .details-content { padding: 70px 27px 75px; }
+      .details-content h2 { font-size: 52px; }
+      .sizes { padding: 82px 23px; grid-template-columns: 1fr; gap: 30px; }
+      .size-cards { gap: 9px; }
+      .size-card { padding: 19px 16px; }
+      .size-card .number { font-size: 29px; }
+      .size-card h3 { font-size: 21px; }
+      .extras { padding: 80px 22px; grid-template-columns: 1fr; gap: 30px; }
+      .extras-gallery { gap: 10px; }
+      .extra-item { height: 205px; }
+      .extra-item:first-child { margin-top: 22px; }
+      .testimonial { padding: 80px 25px; grid-template-columns: 1fr; gap: 42px; }
+      .feedback-image { width: 83%; max-height: 350px; margin: 0 auto; }
+      .quote-copy h2 { font-size: 50px; }
+      .order { padding: 82px 23px 90px; }
+      .order-wrap { grid-template-columns: 1fr; gap: 35px; }
+      .order-intro h2 { font-size: 55px; }
+      .order-form { gap: 17px 12px; }
+      .field { grid-column: 1 / -1; }
+      .form-submit { width: 100%; }
+      .form-submit .button { width: 100%; }
+      .footer-top { flex-direction: column; }
+      .footer-bottom { flex-direction: column; line-height: 1.8; }
+      .modal-box { grid-template-columns: 1fr; max-height: 92vh; overflow-y: auto; }
+      .modal-image { min-height: 260px; height: 42vh; }
+      .modal-info { padding: 27px; }
+      .modal-info h3 { font-size: 34px; }
+      .whatsapp-float { right: 17px; bottom: 17px; width: 52px; height: 52px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
     }
   </style>
 </head>
-
 <body>
-  <!-- Cabeçalho fixo -->
-  <header class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a class="brand" href="#inicio" aria-label="ML Confeitaria - início">
-        <span class="brand-mark">ML</span>
-        <span class="brand-name"><strong>ML Confeitaria</strong><small>Feito com amor e carinho</small></span>
-      </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
-      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
-        <a href="#bolos">Nossos Bolos</a>
-        <a href="#sabores">Sabores &amp; Tamanhos</a>
-        <a href="#clientes">Clientes</a>
-        <a href="#orcamento">Orçamento</a>
-      </nav>
-      <a class="btn btn-primary nav-cta" href="#orcamento">Faça seu pedido <span>↗</span></a>
-    </div>
+  <div class="announcement">Feito à mão, com tempo, afeto e intenção · Encomendas sob consulta</div>
+
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="ML Confeitaria - início">
+      <img src="logo.jpg" alt="Logo ML Confeitaria">
+      <span class="brand-name">ML<small>Confeitaria artesanal</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#colecao">Criações</a>
+      <a href="#sabores">Sabores & tamanhos</a>
+      <a href="#experiencia">Nossa essência</a>
+      <a class="nav-cta" href="#orcamento">Faça sua encomenda</a>
+    </nav>
   </header>
 
   <main>
-    <!-- Primeira dobra -->
     <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-copy reveal">
-          <div class="eyebrow hero-kicker">Confeitaria artesanal · São Luís, MA</div>
-          <h1>Momentos especiais merecem um sabor <em>inesquecível.</em></h1>
-          <p>Bolos feitos sob medida para celebrar a sua história. Cada detalhe é preparado com carinho, criatividade e aquele toque artesanal que transforma comemorações em lembranças deliciosas.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#orcamento">Monte seu orçamento <span>→</span></a>
-            <a class="btn btn-outline" href="https://wa.me/5598987912542?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ML%20Confeitaria." target="_blank" rel="noopener">♡ Fale pelo WhatsApp</a>
-          </div>
-          <div class="hero-meta">
-            <span><b>✦</b> Feito à mão</span>
-            <span><b>✦</b> Sob encomenda</span>
-            <span><b>✦</b> São Luís – MA</span>
-          </div>
+      <div class="hero-image" role="img" aria-label="Bolo artesanal decorado da ML Confeitaria"></div>
+      <div class="hero-content">
+        <div class="eyebrow">Confeitaria feita com intenção</div>
+        <h1>Pequenos detalhes.<br>Grandes <em>memórias.</em></h1>
+        <p class="hero-copy">Bolos e doces artesanais criados para transformar encontros em lembranças especiais. Cada camada, textura e acabamento tem uma história para contar.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#colecao">Explore nossas criações</a>
+          <a class="text-link" href="#orcamento">Encomende agora <span>↗</span></a>
         </div>
-        <div class="hero-visual reveal reveal-delay-2">
-          <div class="hero-photo-wrap">
-            <img src="aniversario.webp" alt="Bolo artístico de aniversário feito pela ML Confeitaria" fetchpriority="high">
-          </div>
-          <div class="hero-stamp">feito com<br>amor &amp;<br>carinho</div>
-          <div class="floating-note">
-            <span class="note-icon">♡</span>
-            <span><strong>Agenda aberta</strong><small>Para seus próximos eventos</small></span>
-          </div>
+      </div>
+      <div class="hero-stamp"><span>feito à mão</span>com afeto<span>ML · atelier</span></div>
+      <div class="hero-index">ML Confeitaria · Desde o primeiro detalhe</div>
+    </section>
+
+    <section class="intro" id="experiencia">
+      <div>
+        <div class="section-kicker">01 — Nossa essência</div>
+        <h2>O sabor de uma<br><em>ocasião única.</em></h2>
+      </div>
+      <div class="intro-copy">
+        <p>Acreditamos que celebrar merece mais do que um bolo bonito. Merece cuidado em cada escolha, ingredientes selecionados e uma criação que tenha a personalidade de quem está comemorando.</p>
+        <p>Na ML Confeitaria, cada encomenda é pensada especialmente para você — do primeiro contato ao último pedaço.</p>
+        <div class="signature">Com carinho, ML.</div>
+      </div>
+    </section>
+
+    <section class="collection" id="colecao">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">02 — A coleção</div>
+          <h2>Feitos para serem<br><em>lembrados.</em></h2>
+        </div>
+        <p>Uma seleção de criações autorais. Toque em cada imagem para conhecer um pouco mais e imaginar a sua próxima celebração.</p>
+      </div>
+
+      <div class="gallery">
+        <button class="gallery-item" data-title="Bolo do Mar" data-description="Uma criação temática cheia de personalidade, com acabamento artesanal e detalhes pensados para encantar." data-image="bolo-do-mar.webp" aria-label="Ver detalhes do Bolo do Mar">
+          <img src="bolo-do-mar.webp" alt="Bolo temático do mar" loading="lazy">
+          <span class="gallery-label"><span><strong>Bolo do Mar</strong><small>Criação temática</small></span><span>↗</span></span>
+        </button>
+        <button class="gallery-item" data-title="Doce de Maracujá" data-description="Uma combinação tropical e delicada, ideal para quem ama sabores marcantes com um toque de frescor." data-image="bolo-maracuja.webp" aria-label="Ver detalhes do bolo de maracujá">
+          <img src="bolo-maracuja.webp" alt="Bolo de maracujá" loading="lazy">
+          <span class="gallery-label"><span><strong>Maracujá</strong><small>Sabores especiais</small></span><span>↗</span></span>
+        </button>
+        <button class="gallery-item" data-title="Bolo Minecraft" data-description="Tema personalizado para uma comemoração divertida. Cada detalhe é desenvolvido para combinar com a festa." data-image="bolo-minecraft.webp" aria-label="Ver detalhes do bolo Minecraft">
+          <img src="bolo-minecraft.webp" alt="Bolo temático Minecraft" loading="lazy">
+          <span class="gallery-label"><span><strong>Minecraft</strong><small>Festas personalizadas</small></span><span>↗</span></span>
+        </button>
+        <button class="gallery-item" data-title="Bolo Morango" data-description="Uma escolha delicada e irresistível, com visual encantador para comemorações especiais." data-image="bolo-morango.webp" aria-label="Ver detalhes do bolo de morango">
+          <img src="bolo-morango.webp" alt="Bolo artesanal de morango" loading="lazy">
+          <span class="gallery-label"><span><strong>Morango</strong><small>Clássicos afetivos</small></span><span>↗</span></span>
+        </button>
+        <button class="gallery-item" data-title="Red Velvet" data-description="Elegância em cada fatia. Uma opção sofisticada para deixar a mesa ainda mais especial." data-image="bolo-red-velvet.webp" aria-label="Ver detalhes do bolo Red Velvet">
+          <img src="bolo-red-velvet.webp" alt="Bolo Red Velvet" loading="lazy">
+          <span class="gallery-label"><span><strong>Red Velvet</strong><small>Um clássico especial</small></span><span>↗</span></span>
+        </button>
+        <button class="gallery-item" data-title="Bolo Soneca" data-description="Uma criação lúdica e delicada, feita para tornar o momento ainda mais memorável." data-image="bolo-soneca.jpg" aria-label="Ver detalhes do bolo Soneca">
+          <img src="bolo-soneca.jpg" alt="Bolo temático Soneca" loading="lazy">
+          <span class="gallery-label"><span><strong>Soneca</strong><small>Afeto em cada detalhe</small></span><span>↗</span></span>
+        </button>
+      </div>
+      <div class="gallery-note"><span>Criações personalizadas</span><span>01 / 06 · ML Confeitaria</span></div>
+    </section>
+
+    <section class="details-band" id="sabores">
+      <div class="details-photo">
+        <img src="aniversario.webp" alt="Bolo artesanal de aniversário" loading="lazy">
+      </div>
+      <div class="details-content">
+        <div class="section-kicker">03 — A experiência</div>
+        <h2>Uma receita de<br><em>bons momentos.</em></h2>
+        <p>Da massa ao acabamento, cada escolha faz diferença. Conte para nós o que você imagina e vamos encontrar juntos a combinação ideal para sua comemoração.</p>
+        <ul class="detail-list">
+          <li><span>Massas e recheios</span><span>Do seu jeito</span></li>
+          <li><span>Decoração personalizada</span><span>Única</span></li>
+          <li><span>Produção artesanal</span><span>Com cuidado</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sizes">
+      <div class="sizes-copy">
+        <div class="section-kicker">04 — Guia de encomenda</div>
+        <h2>O tamanho ideal<br>para <em>celebrar.</em></h2>
+        <p>O tamanho do bolo depende do formato, da altura, do tipo de corte e da quantidade de outros doces servidos. Use este guia como referência inicial; confirmamos a melhor opção no orçamento.</p>
+      </div>
+      <div class="size-cards">
+        <article class="size-card"><div class="number">01</div><h3>Pequeno</h3><p>Ideal para encontros intimistas e comemorações menores.</p></article>
+        <article class="size-card"><div class="number">02</div><h3>Médio</h3><p>Uma escolha versátil para reunir família e amigos.</p></article>
+        <article class="size-card"><div class="number">03</div><h3>Grande</h3><p>Para festas com mais convidados e mesa de destaque.</p></article>
+        <article class="size-card"><div class="number">04</div><h3>Especial</h3><p>Projetos personalizados, formatos e decorações especiais.</p></article>
+        <p class="size-footnote">* Quantidades de fatias e pesos são definidos conforme o modelo e a receita. Consulte disponibilidade e valores pelo WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="extras">
+      <div>
+        <div class="section-kicker">05 — Além dos bolos</div>
+        <h2>Mais motivos<br>para <em>reunir.</em></h2>
+        <p>Também preparamos opções para deixar sua mesa completa: pães caseiros e salgadinhos para compartilhar em momentos especiais.</p>
+      </div>
+      <div class="extras-gallery">
+        <div>
+          <div class="extra-item"><img src="pão-caseiro.webp" alt="Pão caseiro artesanal" loading="lazy"></div>
+          <div class="extra-caption">Pão caseiro</div>
+        </div>
+        <div>
+          <div class="extra-item"><img src="salgadinhos.webp" alt="Salgadinhos para festas" loading="lazy"></div>
+          <div class="extra-caption">Salgadinhos</div>
         </div>
       </div>
     </section>
 
-    <!-- Galeria com filtros -->
-    <section class="gallery-section" id="bolos">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Um carinho em cada detalhe</span>
-          <h2>Feitos para encantar.<br><em class="script-note">Criados para celebrar.</em></h2>
-          <p>Do primeiro olhar ao último pedacinho, cada bolo é pensado para combinar com o seu momento.</p>
-        </div>
-
-        <div class="filters reveal" role="group" aria-label="Filtrar bolos por categoria">
-          <button class="filter-btn active" data-filter="todos" aria-pressed="true">Todos</button>
-          <button class="filter-btn" data-filter="tematicos" aria-pressed="false">Temáticos &amp; Andares</button>
-          <button class="filter-btn" data-filter="florais" aria-pressed="false">Aniversários &amp; Florais</button>
-          <button class="filter-btn" data-filter="caldas" aria-pressed="false">Caldas &amp; Recheados</button>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid">
-          <article class="cake-card reveal" data-category="florais">
-            <div class="cake-image" role="button" tabindex="0" data-title="Celebração especial" data-description="Um bolo artístico de aniversário, com decoração personalizada para deixar a comemoração ainda mais bonita." data-image="aniversario.webp" aria-label="Ampliar foto do bolo Celebração especial">
-              <img src="aniversario.webp" alt="Bolo decorado de aniversário" loading="lazy"><span class="image-hint">↗</span>
-            </div>
-            <div class="cake-info"><span class="cake-category">Aniversários &amp; Florais</span><h3>Celebração especial</h3><p>Um projeto personalizado para marcar uma data inesquecível.</p><a class="text-link card-quote" href="#orcamento" data-cake="Celebração especial">Quero um bolo assim ↗</a></div>
-          </article>
-
-          <article class="cake-card reveal reveal-delay-1" data-category="tematicos">
-            <div class="cake-image" role="button" tabindex="0" data-title="Aventura em dois andares" data-description="Bolo temático de dois andares inspirado no universo Minecraft, com estrutura e decoração cheias de personalidade." data-image="bolo-minecraft.webp" aria-label="Ampliar foto do bolo Minecraft">
-              <img src="bolo-minecraft.webp" alt="Bolo de dois andares com tema Minecraft" loading="lazy"><span class="image-hint">↗</span>
-            </div>
-            <div class="cake-info"><span class="cake-category">Temáticos &amp; Andares</span><h3>Aventura em dois andares</h3><p>Um tema que ganha vida em uma criação cheia de detalhes.</p><a class="text-link card-quote" href="#orcamento" data-cake="Bolo Minecraft de dois andares">Quero um bolo assim ↗</a></div>
-          </article>
-
-          <article class="cake-card reveal reveal-delay-2" data-category="florais">
-            <div class="cake-image" role="button" tabindex="0" data-title="Encanto lilás" data-description="Bolo espatulado em tons de roxo e lilás, com flores, brilho comestível e delicados detalhes dourados." data-image="bolo-roxo.webp" aria-label="Ampliar foto do bolo lilás">
-              <img src="bolo-roxo.webp" alt="Bolo lilás com flores e detalhes dourados" loading="lazy"><span class="image-hint">↗</span>
-            </div>
-            <div class="cake-info"><span class="cake-category">Aniversários &amp; Florais</span><h3>Encanto lilás</h3><p>Flores, brilho comestível e delicadeza em cada acabamento.</p><a class="text-link card-quote" href="#orcamento" data-cake="Bolo floral lilás">Quero um bolo assim ↗</a></div>
-          </article>
-
-          <article class="cake-card reveal" data-category="caldas">
-            <div class="cake-image" role="button" tabindex="0" data-title="Maracujá irresistível" data-description="Bolo espatulado finalizado com uma calda brilhante de maracujá, preparada para trazer um toque especial de sabor." data-image="bolo-maracuja.webp" aria-label="Ampliar foto do bolo de maracujá">
-              <img src="bolo-maracuja.webp" alt="Bolo com calda artesanal de maracujá" loading="lazy"><span class="image-hint">↗</span>
-            </div>
-            <div class="cake-info"><span class="cake-category">Caldas &amp; Recheados</span><h3>Maracujá irresistível</h3><p>Calda artesanal com sabor marcante e visual apetitoso.</p><a class="text-link card-quote" href="#orcamento" data-cake="Bolo com calda de maracujá">Quero um bolo assim ↗</a></div>
-          </article>
-
-          <article class="cake-card reveal reveal-delay-1" data-category="tematicos">
-            <div class="cake-image" role="button" tabindex="0" data-title="Um mês de soneca" data-description="Uma ideia criativa e delicada para celebrar o mesversário com um bolo cheio de personalidade." data-image="bolo-soneca.webp" aria-label="Ampliar foto do bolo de mesversário">
-              <img src="bolo-soneca.webp" alt="Bolo criativo de mesversário com tema um mês de soneca" loading="lazy"><span class="image-hint">↗</span>
-            </div>
-            <div class="cake-info"><span class="cake-category">Temáticos &amp; Andares</span><h3>Um mês de soneca</h3><p>Mesversários criativos para celebrar cada nova descoberta.</p><a class="text-link card-quote" href="#orcamento" data-cake="Bolo de mesversário Um mês de soneca">Quero um bolo assim ↗</a></div>
-          </article>
-
-          <article class="cake-card reveal reveal-delay-2" data-category="caldas">
-            <div class="cake-image" role="button" tabindex="0" data-title="Morango &amp; creme" data-description="Uma fatia generosa de bolo branco, com camadas de creme e morangos frescos. Uma inspiração para quem ama recheios especiais." data-image="bolo-morango.webp" aria-label="Ampliar foto do bolo de morango">
-              <img src="bolo-morango.webp" alt="Fatia de bolo branco recheado com creme e morangos frescos" loading="lazy"><span class="image-hint">↗</span>
-            </div>
-            <div class="cake-info"><span class="cake-category">Caldas &amp; Recheados</span><h3>Morango &amp; creme</h3><p>Camadas generosas, creme delicado e morangos frescos.</p><a class="text-link card-quote" href="#orcamento" data-cake="Bolo recheado de morango e creme">Quero um bolo assim ↗</a></div>
-          </article>
-        </div>
-        <p class="gallery-foot reveal">Gostou de algum modelo? As cores, sabores e detalhes podem ser personalizados para a sua comemoração.</p>
+    <section class="testimonial">
+      <div class="feedback-image"><img src="feedback.webp" alt="Feedback de cliente da ML Confeitaria" loading="lazy"></div>
+      <div class="quote-copy">
+        <div class="section-kicker">06 — Quem prova, recomenda</div>
+        <div class="quote-mark">“</div>
+        <h2>Carinho que<br>chega à <em>mesa.</em></h2>
+        <p>Cada encomenda carrega uma parte da nossa dedicação. E não existe recompensa maior do que saber que nossas criações fizeram parte de um momento feliz.</p>
+        <div class="quote-signature">Sua celebração também pode ser assim.</div>
       </div>
     </section>
 
-    <!-- Faixa emocional com parallax -->
-    <section class="parallax" aria-label="Nossa essência artesanal">
-      <div class="parallax-content reveal">
-        <span class="eyebrow">Mais que confeitaria, carinho em forma de sabor</span>
-        <h2>O ingrediente especial está no cuidado de cada preparo.</h2>
-        <p>Da decoração feita com atenção aos detalhes às caldas artesanais com frutas naturais, tudo é preparado para fazer parte de boas memórias. E para deixar a casa ainda mais gostosa, também temos pães caseiros artesanais feitos por encomenda.</p>
-        <span class="script-note">Feito com amor e carinho!</span>
-      </div>
-    </section>
-
-    <!-- Sabores e tamanhos -->
-    <section class="flavors-section" id="sabores">
-      <div class="container flavor-grid">
-        <div class="flavor-photo reveal">
-          <img src="bolo-morango.webp" alt="Detalhe de bolo recheado com creme e morangos frescos" loading="lazy">
-        </div>
-        <div class="flavor-copy reveal reveal-delay-1">
-          <span class="eyebrow">Uma experiência deliciosa</span>
-          <h2>Por dentro, tanto carinho quanto por fora.</h2>
-          <p>Escolha combinações que dão água na boca. Os sabores e a montagem são definidos de acordo com a proposta do seu evento e a disponibilidade da agenda.</p>
-          <div class="flavor-lists">
-            <div class="flavor-list">
-              <h3>Nossas massas</h3>
-              <ul><li>Branca amanteigada</li><li>Chocolate 50%</li><li>Mista</li></ul>
-            </div>
-            <div class="flavor-list">
-              <h3>Recheios especiais</h3>
-              <ul><li>Ninho com morangos frescos</li><li>Brigadeiro cremoso</li><li>Maracujá trufado</li><li>Beijinho</li></ul>
-            </div>
-          </div>
-          <div class="sizes">
-            <h3>Um guia para escolher o tamanho</h3>
-            <div class="size-grid">
-              <div class="size-item"><strong>15</strong><span>fatias<br>pequenas celebrações</span></div>
-              <div class="size-item"><strong>25–30</strong><span>fatias<br>reuniões e festas</span></div>
-              <div class="size-item"><strong>50+</strong><span>fatias<br>bolos maiores ou andares</span></div>
-            </div>
-            <p style="margin:13px 0 0;color:#806b60;font-size:.65rem;line-height:1.6">Rendimento aproximado. O número de fatias pode variar conforme o formato, a altura e o tamanho do corte. Consulte a confeiteira para dimensionar seu pedido.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Prova social -->
-    <section class="testimonial-section" id="clientes">
-      <div class="container">
-        <div class="section-heading reveal">
-          <span class="eyebrow">Carinho que volta em forma de elogio</span>
-          <h2>Quem prova, <em class="script-note">sente a diferença.</em></h2>
-        </div>
-        <div class="testimonial-grid">
-          <div class="feedback-frame reveal">
-            <img src="feedback.webp" alt="Captura de tela de uma avaliação positiva enviada por uma cliente no WhatsApp" loading="lazy">
-            <div class="feedback-caption">Uma mensagem que deixa nosso dia mais doce ♡</div>
-          </div>
-          <div class="testimonial-copy reveal reveal-delay-1">
-            <div class="stars" aria-label="Cinco estrelas">★★★★★</div>
-            <blockquote>“Estava delicioso! Quase não deu pra quem quis.”</blockquote>
-            <p>É por mensagens assim que colocamos ainda mais amor em cada encomenda. Obrigada pela confiança e por permitir que a ML Confeitaria faça parte dos seus momentos especiais.</p>
-            <div class="client-signature">
-              <span class="client-avatar">J</span>
-              <span><strong>Tia Jessica</strong><small>Cliente ML Confeitaria</small></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Montador de orçamento -->
-    <section class="quote-section" id="orcamento">
-      <div class="container quote-grid">
-        <div class="quote-intro reveal">
-          <span class="eyebrow">Vamos criar algo especial?</span>
-          <h2>Seu próximo momento delicioso começa aqui.</h2>
-          <p>Conte um pouquinho sobre a sua comemoração. As informações seguem organizadas para o WhatsApp, facilitando o atendimento e a preparação do seu orçamento.</p>
-          <div class="contact-detail"><span>◷</span><div><strong>Atendimento</strong><br>Todos os dias, das 9h às 20h</div></div>
-          <div class="contact-detail"><span>⌖</span><div><strong>Onde estamos</strong><br>São Luís – Maranhão</div></div>
-          <div class="contact-detail"><span>♡</span><div><strong>WhatsApp</strong><br>(98) 98791-2542</div></div>
+    <section class="order" id="orcamento">
+      <div class="order-wrap">
+        <div class="order-intro">
+          <div class="section-kicker">07 — Vamos criar juntos?</div>
+          <h2>Sua ideia<br>merece virar <em>doce.</em></h2>
+          <p>Conte um pouco sobre sua comemoração. Vamos preparar uma mensagem com os detalhes e encaminhar diretamente para o WhatsApp da ML Confeitaria.</p>
+          <div class="contact-note">Cada pedido é avaliado individualmente.<br>Consulte prazo, agenda e disponibilidade.</div>
         </div>
 
-        <form class="quote-form reveal reveal-delay-1" id="quoteForm">
-          <div class="form-heading">
-            <h3>Monte seu orçamento</h3>
-            <p>Preencha os campos e continue pelo WhatsApp.</p>
+        <form class="order-form" id="quoteForm">
+          <div class="field">
+            <label for="name">Seu nome</label>
+            <input id="name" name="name" type="text" placeholder="Como podemos chamar você?" required>
           </div>
-          <div class="form-grid">
-            <div class="field">
-              <label for="clientName">Seu nome *</label>
-              <input id="clientName" name="nome" type="text" placeholder="Como podemos te chamar?" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="eventDate">Data do evento *</label>
-              <input id="eventDate" name="data" type="date" required>
-            </div>
-            <div class="field">
-              <label for="orderType">Tipo de pedido *</label>
-              <select id="orderType" name="tipo" required>
-                <option value="" disabled selected>Selecione uma opção</option>
-                <option>Aniversário</option>
-                <option>Temático</option>
-                <option>2 ou mais andares</option>
-                <option>Mesversário</option>
-                <option>Casamento</option>
-                <option>Pães caseiros</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="orderSize">Tamanho estimado *</label>
-              <select id="orderSize" name="tamanho" required>
-                <option value="" disabled selected>Quantas pessoas?</option>
-                <option>Até 15 fatias</option>
-                <option>De 25 a 30 fatias</option>
-                <option>De 30 a 50 fatias</option>
-                <option>Mais de 50 fatias</option>
-                <option>Quero ajuda para escolher</option>
-                <option>Não se aplica (pães caseiros)</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="orderNotes">Observações, tema ou sabor desejado</label>
-              <textarea id="orderNotes" name="observacoes" placeholder="Conte sua ideia, tema da festa, sabores que gosta ou alguma inspiração..."></textarea>
-            </div>
+          <div class="field">
+            <label for="phone">Seu telefone</label>
+            <input id="phone" name="phone" type="tel" placeholder="(00) 00000-0000">
           </div>
-          <button class="btn btn-primary form-submit" type="submit">Enviar pedido pelo WhatsApp <span>↗</span></button>
-          <p class="form-privacy">Ao continuar, o WhatsApp será aberto com os dados preenchidos para você revisar e enviar.</p>
+          <div class="field">
+            <label for="product">O que deseja?</label>
+            <select id="product" name="product" required>
+              <option value="">Selecione uma opção</option>
+              <option>Bolo personalizado</option>
+              <option>Bolo tradicional</option>
+              <option>Pão caseiro</option>
+              <option>Salgadinhos</option>
+              <option>Outro / combinação</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Data da comemoração</label>
+            <input id="date" name="date" type="date">
+          </div>
+          <div class="field">
+            <label for="guests">Quantidade de convidados</label>
+            <select id="guests" name="guests">
+              <option value="">Ainda não sei</option>
+              <option>Até 10 pessoas</option>
+              <option>11 a 20 pessoas</option>
+              <option>21 a 30 pessoas</option>
+              <option>31 a 50 pessoas</option>
+              <option>Mais de 50 pessoas</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="flavor">Sabor ou massa desejada</label>
+            <input id="flavor" name="flavor" type="text" placeholder="Ex.: chocolate, ninho, red velvet...">
+          </div>
+          <div class="field full">
+            <label for="details">Conte como você imagina</label>
+            <textarea id="details" name="details" placeholder="Tema, cores, recheios, referências ou qualquer detalhe importante..."></textarea>
+          </div>
+          <div class="form-feedback" id="formFeedback" aria-live="polite"></div>
+          <div class="form-submit">
+            <button class="button button-dark" type="submit">Enviar pedido pelo WhatsApp <span aria-hidden="true">↗</span></button>
+          </div>
         </form>
       </div>
     </section>
   </main>
 
-  <!-- Rodapé -->
   <footer>
-    <div class="container">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <a class="brand" href="#inicio">
-            <span class="brand-mark">ML</span>
-            <span class="brand-name"><strong>ML Confeitaria</strong><small>Feito com amor e carinho</small></span>
-          </a>
-          <p>Pequenos detalhes, grandes momentos e muito sabor em cada criação.</p>
-        </div>
-        <div class="footer-col">
-          <h3>Fale com a gente</h3>
-          <a href="https://wa.me/5598987912542" target="_blank" rel="noopener">(98) 98791-2542</a>
-          <a href="https://instagram.com/ml_confeitaria_slz" target="_blank" rel="noopener">@ml_confeitaria_slz</a>
-          <p>Atendimento: 9h às 20h</p>
-        </div>
-        <div class="footer-col">
-          <h3>Encontre a ML</h3>
-          <p>São Luís – Maranhão</p>
-          <a href="#bolos">Conheça nossos bolos</a>
-          <a href="#orcamento">Solicite seu orçamento</a>
-        </div>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">ML Confeitaria<small>Feito à mão, feito com afeto</small></div>
       </div>
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> ML Confeitaria. Todos os direitos reservados.</span>
-        <span class="developer-credit">
-          <span>Desenvolvido por <a href="https://instagram.com" target="_blank" rel="noopener">Armando Rocha</a></span>
-          <a class="dev-wa" href="https://wa.me" target="_blank" rel="noopener" aria-label="WhatsApp do desenvolvedor">↗</a>
-        </span>
+      <p class="footer-message">Criamos doces momentos para celebrar o que realmente importa. Obrigado por considerar a ML para fazer parte da sua história.</p>
+      <div class="footer-links">
+        <a href="#colecao">Criações</a>
+        <a href="#sabores">Sabores</a>
+        <a href="#orcamento">Orçamentos</a>
       </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ML Confeitaria · Todos os direitos reservados</span>
+      <span>Feito com delicadeza.</span>
     </div>
   </footer>
 
-  <!-- Atalho flutuante de WhatsApp -->
-  <a class="whatsapp-float" href="https://wa.me/5598987912542?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ML%20Confeitaria." target="_blank" rel="noopener" aria-label="Conversar com a ML Confeitaria pelo WhatsApp">☏</a>
+  <a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Fale com a ML Confeitaria pelo WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .8A15.1 15.1 0 0 0 3.05 23.67L1 31l7.5-1.97A15.2 15.2 0 1 0 16 .8Zm0 27.55a12.3 12.3 0 0 1-6.27-1.72l-.45-.27-4.45 1.17 1.19-4.34-.29-.46A12.38 12.38 0 1 1 16 28.35Zm6.8-9.27c-.37-.19-2.2-1.09-2.54-1.21-.34-.13-.59-.19-.84.19-.25.37-.96 1.21-1.18 1.46-.22.25-.44.28-.81.09-.37-.19-1.57-.58-2.99-1.85-1.1-.98-1.84-2.2-2.06-2.57-.22-.37-.02-.58.17-.77.17-.17.37-.44.56-.66.19-.22.25-.37.37-.62.13-.25.06-.47-.03-.66-.09-.19-.84-2.02-1.15-2.77-.3-.72-.61-.62-.84-.63h-.72c-.25 0-.66.09-1 .47-.34.37-1.31 1.28-1.31 3.11s1.34 3.61 1.53 3.86c.19.25 2.64 4.03 6.4 5.65.89.38 1.59.61 2.13.78.9.29 1.72.25 2.37.15.72-.11 2.2-.9 2.51-1.77.31-.87.31-1.62.22-1.77-.09-.16-.34-.25-.72-.44Z"/></svg>
+  </a>
 
-  <!-- Modal de imagem / orçamento do modelo -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" aria-label="Fechar janela">×</button>
-      <div class="modal-image"><img id="modalImage" src="" alt=""></div>
-      <div class="modal-copy">
-        <span class="eyebrow">Um modelo para inspirar</span>
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+      <div class="modal-image"><img id="modalImg" src="" alt=""></div>
+      <div class="modal-info">
+        <div class="section-kicker">ML — Criação artesanal</div>
         <h3 id="modalTitle"></h3>
         <p id="modalDescription"></p>
-        <a class="btn btn-primary" id="modalQuote" href="#" target="_blank" rel="noopener">Quero um orçamento deste modelo ↗</a>
+        <a class="button button-dark" href="#orcamento" id="modalOrder">Quero encomendar ↗</a>
       </div>
     </div>
   </div>
 
   <script>
-    "use strict";
+    /*
+      CONFIGURAÇÃO IMPORTANTE:
+      Troque o número abaixo pelo WhatsApp da confeiteira.
+      Use código do país + DDD + número, somente números.
+      Exemplo: 5598991234567
+    */
+    const WHATSAPP_NUMBER = "5598999999999";
 
-    const WHATSAPP_NUMBER = "5598987912542";
-    const whatsappUrl = (message) =>
+    const whatsappUrl = (message = "Olá! Gostaria de conhecer as opções da ML Confeitaria.") =>
       `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
-    // Navbar compacta ao rolar e menu mobile acessível.
-    const navbar = document.getElementById("navbar");
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("whatsappFloat").href = whatsappUrl();
+
+    // Menu mobile
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
-
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("scrolled", window.scrollY > 20);
-    }, { passive: true });
-
     menuToggle.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
+      const isOpen = navLinks.classList.toggle("active");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
       menuToggle.textContent = isOpen ? "×" : "☰";
     });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "☰";
+    }));
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Abrir menu");
-        menuToggle.textContent = "☰";
-      });
-    });
-
-    // Filtros da vitrine.
-    const filterButtons = document.querySelectorAll(".filter-btn");
-    const cakeCards = document.querySelectorAll(".cake-card");
-
-    filterButtons.forEach(button => {
-      button.addEventListener("click", () => {
-        const filter = button.dataset.filter;
-        filterButtons.forEach(item => {
-          const active = item === button;
-          item.classList.toggle("active", active);
-          item.setAttribute("aria-pressed", String(active));
-        });
-        cakeCards.forEach(card => {
-          const shouldShow = filter === "todos" || card.dataset.category === filter;
-          card.hidden = !shouldShow;
-          if (shouldShow) {
-            card.classList.remove("visible");
-            requestAnimationFrame(() => card.classList.add("visible"));
-          }
-        });
-      });
-    });
-
-    // Lightbox: clique ou Enter/Espaço em qualquer imagem da galeria.
-    const lightbox = document.getElementById("lightbox");
-    const modalImage = document.getElementById("modalImage");
+    // Galeria com modal acessível
+    const modal = document.getElementById("productModal");
+    const modalImg = document.getElementById("modalImg");
     const modalTitle = document.getElementById("modalTitle");
     const modalDescription = document.getElementById("modalDescription");
-    const modalQuote = document.getElementById("modalQuote");
     const modalClose = document.getElementById("modalClose");
-    let lastFocusedElement = null;
 
-    function openLightbox(trigger) {
-      lastFocusedElement = trigger;
-      const { image, title, description } = trigger.dataset;
-      modalImage.src = image;
-      modalImage.alt = title;
-      modalTitle.textContent = title;
-      modalDescription.textContent = description;
-      modalQuote.href = whatsappUrl(`Olá! Gostaria de solicitar um orçamento para este modelo: *${title}*.`);
-      lightbox.classList.add("open");
-      lightbox.setAttribute("aria-hidden", "false");
-      document.body.classList.add("modal-open");
-      modalClose.focus();
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("open");
-      lightbox.setAttribute("aria-hidden", "true");
+    function closeModal() {
+      modal.classList.remove("open");
       document.body.classList.remove("modal-open");
-      modalImage.src = "";
-      if (lastFocusedElement) lastFocusedElement.focus();
     }
 
-    document.querySelectorAll(".cake-image").forEach(image => {
-      image.addEventListener("click", () => openLightbox(image));
-      image.addEventListener("keydown", event => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openLightbox(image);
-        }
+    document.querySelectorAll(".gallery-item").forEach(item => {
+      item.addEventListener("click", () => {
+        modalImg.src = item.dataset.image;
+        modalImg.alt = item.dataset.title;
+        modalTitle.textContent = item.dataset.title;
+        modalDescription.textContent = item.dataset.description;
+        modal.classList.add("open");
+        document.body.classList.add("modal-open");
+        modalClose.focus();
       });
     });
 
-    modalClose.addEventListener("click", closeLightbox);
-    lightbox.addEventListener("click", event => {
-      if (event.target === lightbox) closeLightbox();
-    });
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
-    });
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", event => { if (event.target === modal) closeModal(); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeModal(); });
+    document.getElementById("modalOrder").addEventListener("click", closeModal);
 
-    // Atalhos nos cards: levam ao formulário com o modelo já descrito.
-    document.querySelectorAll(".card-quote").forEach(link => {
-      link.addEventListener("click", () => {
-        const notes = document.getElementById("orderNotes");
-        notes.value = `Tenho interesse neste modelo: ${link.dataset.cake}.`;
-      });
-    });
-
-    // Formulário estruturado: valida, formata a data e abre o WhatsApp.
+    // Orçamento: monta uma mensagem organizada e abre o WhatsApp
     const quoteForm = document.getElementById("quoteForm");
+    const feedback = document.getElementById("formFeedback");
+
     quoteForm.addEventListener("submit", event => {
       event.preventDefault();
       if (!quoteForm.reportValidity()) return;
 
-      const name = document.getElementById("clientName").value.trim();
-      const rawDate = document.getElementById("eventDate").value;
-      const [year, month, day] = rawDate.split("-");
-      const formattedDate = `${day}/${month}/${year}`;
-      const type = document.getElementById("orderType").value;
-      const size = document.getElementById("orderSize").value;
-      const notes = document.getElementById("orderNotes").value.trim() || "Não informado";
+      const data = new FormData(quoteForm);
+      const value = key => (data.get(key) || "").toString().trim();
+      const dateValue = value("date");
+      const formattedDate = dateValue
+        ? new Date(`${dateValue}T12:00:00`).toLocaleDateString("pt-BR")
+        : "Ainda não definida";
 
       const message = [
-        "Olá, ML Confeitaria! Gostaria de solicitar um orçamento. ♡",
+        "Olá! Gostaria de solicitar um orçamento com a *ML Confeitaria*.",
         "",
-        `*Nome:* ${name}`,
-        `*Data do evento:* ${formattedDate}`,
-        `*Tipo de pedido:* ${type}`,
-        `*Tamanho estimado:* ${size}`,
-        `*Observações / tema:* ${notes}`,
+        `*Nome:* ${value("name")}`,
+        `*Telefone:* ${value("phone") || "Não informado"}`,
+        `*Pedido:* ${value("product")}`,
+        `*Data:* ${formattedDate}`,
+        `*Convidados:* ${value("guests") || "Não informado"}`,
+        `*Sabor/massa:* ${value("flavor") || "A combinar"}`,
+        `*Detalhes:* ${value("details") || "Gostaria de conversar sobre as opções."}`,
         "",
         "Aguardo o retorno. Obrigado(a)!"
       ].join("\n");
 
+      if (WHATSAPP_NUMBER === "5598999999999") {
+        feedback.textContent = "Antes de publicar, configure o número real do WhatsApp no início do script.";
+      } else {
+        feedback.textContent = "Abrindo o WhatsApp com seu pedido...";
+      }
       window.open(whatsappUrl(message), "_blank", "noopener,noreferrer");
     });
-
-    // Scroll reveal com fallback para navegadores sem IntersectionObserver.
-    const revealItems = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver((entries, currentObserver) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            currentObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
-      revealItems.forEach(item => observer.observe(item));
-    } else {
-      revealItems.forEach(item => item.classList.add("visible"));
-    }
-
-    // Ano automático no rodapé.
-    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
