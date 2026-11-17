@@ -349,13 +349,43 @@
       border: 0; border-radius: 50%; color: var(--cocoa); background: rgba(255,255,255,.9);
       cursor: pointer; font-size: 22px;
     }
-    .whatsapp-float {
-      position: fixed; z-index: 30; right: 24px; bottom: 24px; width: 56px; height: 56px;
-      display: grid; place-items: center; border-radius: 50%; color: white; background: #477b59;
-      box-shadow: 0 8px 28px rgba(28,65,40,.25); transition: transform .3s, box-shadow .3s;
+    /* Ações flutuantes: atendimento, orçamento e retorno ao topo */
+    .floating-actions {
+      position: fixed; z-index: 40; right: 22px; bottom: 22px;
+      display: flex; flex-direction: column; align-items: center; gap: 11px;
     }
-    .whatsapp-float:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 12px 35px rgba(28,65,40,.35); }
-    .whatsapp-float svg { width: 24px; height: 24px; fill: currentColor; }
+    .float-button {
+      position: relative; width: 53px; height: 53px; display: grid; place-items: center;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 50%; color: white;
+      box-shadow: 0 9px 28px rgba(35,22,19,.2);
+      transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease, background .3s ease;
+    }
+    .float-button:hover { transform: translateY(-4px) scale(1.045); box-shadow: 0 14px 32px rgba(35,22,19,.27); }
+    .float-button svg { width: 21px; height: 21px; fill: currentColor; }
+    .float-whatsapp { background: #477b59; }
+    .float-order { background: var(--cocoa); }
+    .float-top {
+      width: 42px; height: 42px; color: var(--cocoa); background: rgba(252,249,244,.94);
+      border: 1px solid rgba(52,35,31,.16); opacity: 0; visibility: hidden;
+      transform: translateY(9px); cursor: pointer;
+    }
+    .float-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .float-top svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+    .float-tooltip {
+      position: absolute; right: calc(100% + 12px); white-space: nowrap;
+      padding: 8px 11px; color: white; background: var(--cocoa); border-radius: 2px;
+      font-size: 8px; letter-spacing: .12em; text-transform: uppercase;
+      opacity: 0; pointer-events: none; transform: translateX(5px);
+      transition: opacity .2s, transform .2s;
+    }
+    .float-button:hover .float-tooltip { opacity: 1; transform: translateX(0); }
+
+    /* Parallax sutil: a imagem se move em velocidade diferente do conteúdo */
+    .hero-image, .details-photo img {
+      will-change: transform;
+    }
+    .details-photo { overflow: hidden; }
+    .details-photo img { height: calc(100% + 90px); transform: translateY(-35px); }
 
     @keyframes heroReveal { from { opacity: .45; transform: scale(1.08); } to { opacity: 1; transform: scale(1.02); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -443,7 +473,11 @@
       .modal-image { min-height: 260px; height: 42vh; }
       .modal-info { padding: 27px; }
       .modal-info h3 { font-size: 34px; }
-      .whatsapp-float { right: 17px; bottom: 17px; width: 52px; height: 52px; }
+      .floating-actions { right: 14px; bottom: 14px; gap: 9px; }
+      .float-button { width: 49px; height: 49px; }
+      .float-top { width: 40px; height: 40px; }
+      .float-tooltip { display: none; }
+      .details-photo img { height: 100%; transform: none !important; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
@@ -522,7 +556,7 @@
           <span class="gallery-label"><span><strong>Morango</strong><small>Clássicos afetivos</small></span><span>↗</span></span>
         </button>
         <button class="gallery-item" data-title="Red Velvet" data-description="Elegância em cada fatia. Uma opção sofisticada para deixar a mesa ainda mais especial." data-image="bolo-red-velvet.webp" aria-label="Ver detalhes do bolo Red Velvet">
-          <img src="bolo-red-velvet.webp" alt="Bolo Red Velvet" loading="lazy">
+          <img src="bolo-red-velvt.webp" alt="Bolo Red Velvet" loading="lazy">
           <span class="gallery-label"><span><strong>Red Velvet</strong><small>Um clássico especial</small></span><span>↗</span></span>
         </button>
         <button class="gallery-item" data-title="Bolo Soneca" data-description="Uma criação lúdica e delicada, feita para tornar o momento ainda mais memorável." data-image="bolo-soneca.jpg" aria-label="Ver detalhes do bolo Soneca">
@@ -672,9 +706,19 @@
     </div>
   </footer>
 
-  <a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Fale com a ML Confeitaria pelo WhatsApp">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .8A15.1 15.1 0 0 0 3.05 23.67L1 31l7.5-1.97A15.2 15.2 0 1 0 16 .8Zm0 27.55a12.3 12.3 0 0 1-6.27-1.72l-.45-.27-4.45 1.17 1.19-4.34-.29-.46A12.38 12.38 0 1 1 16 28.35Zm6.8-9.27c-.37-.19-2.2-1.09-2.54-1.21-.34-.13-.59-.19-.84.19-.25.37-.96 1.21-1.18 1.46-.22.25-.44.28-.81.09-.37-.19-1.57-.58-2.99-1.85-1.1-.98-1.84-2.2-2.06-2.57-.22-.37-.02-.58.17-.77.17-.17.37-.44.56-.66.19-.22.25-.37.37-.62.13-.25.06-.47-.03-.66-.09-.19-.84-2.02-1.15-2.77-.3-.72-.61-.62-.84-.63h-.72c-.25 0-.66.09-1 .47-.34.37-1.31 1.28-1.31 3.11s1.34 3.61 1.53 3.86c.19.25 2.64 4.03 6.4 5.65.89.38 1.59.61 2.13.78.9.29 1.72.25 2.37.15.72-.11 2.2-.9 2.51-1.77.31-.87.31-1.62.22-1.77-.09-.16-.34-.25-.72-.44Z"/></svg>
-  </a>
+  <div class="floating-actions" aria-label="Atalhos rápidos">
+    <button class="float-button float-top" id="backToTop" type="button" aria-label="Voltar ao topo" title="Voltar ao topo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    </button>
+    <a class="float-button float-order" href="#orcamento" aria-label="Fazer orçamento">
+      <span class="float-tooltip">Fazer orçamento</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 18.5v-13ZM8 8h8M8 12h8M8 16h5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </a>
+    <a class="float-button float-whatsapp" id="whatsappFloat" href="#" target="_blank" rel="noopener" aria-label="Fale com a ML Confeitaria pelo WhatsApp">
+      <span class="float-tooltip">Fale pelo WhatsApp</span>
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .8A15.1 15.1 0 0 0 3.05 23.67L1 31l7.5-1.97A15.2 15.2 0 1 0 16 .8Zm0 27.55a12.3 12.3 0 0 1-6.27-1.72l-.45-.27-4.45 1.17 1.19-4.34-.29-.46A12.38 12.38 0 1 1 16 28.35Zm6.8-9.27c-.37-.19-2.2-1.09-2.54-1.21-.34-.13-.59-.19-.84.19-.25.37-.96 1.21-1.18 1.46-.22.25-.44.28-.81.09-.37-.19-1.57-.58-2.99-1.85-1.1-.98-1.84-2.2-2.06-2.57-.22-.37-.02-.58.17-.77.17-.17.37-.44.56-.66.19-.22.25-.37.37-.62.13-.25.06-.47-.03-.66-.09-.19-.84-2.02-1.15-2.77-.3-.72-.61-.62-.84-.63h-.72c-.25 0-.66.09-1 .47-.34.37-1.31 1.28-1.31 3.11s1.34 3.61 1.53 3.86c.19.25 2.64 4.03 6.4 5.65.89.38 1.59.61 2.13.78.9.29 1.72.25 2.37.15.72-.11 2.2-.9 2.51-1.77.31-.87.31-1.62.22-1.77-.09-.16-.34-.25-.72-.44Z"/></svg>
+    </a>
+  </div>
 
   <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-box">
@@ -703,6 +747,47 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
     document.getElementById("whatsappFloat").href = whatsappUrl();
+
+    // Botão de voltar ao topo aparece depois que a pessoa começa a rolar.
+    const backToTop = document.getElementById("backToTop");
+    const updateBackToTop = () => backToTop.classList.toggle("visible", window.scrollY > 480);
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
+    updateBackToTop();
+    backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    // Parallax leve nas imagens principais. Desativado em telas pequenas
+    // e quando o visitante prefere movimento reduzido.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const heroImage = document.querySelector(".hero-image");
+    const detailImage = document.querySelector(".details-photo img");
+    let parallaxTicking = false;
+
+    function updateParallax() {
+      if (reduceMotion.matches || window.innerWidth <= 650) {
+        heroImage.style.transform = "";
+        if (detailImage) detailImage.style.transform = "";
+        parallaxTicking = false;
+        return;
+      }
+      const scrollY = window.scrollY;
+      heroImage.style.transform = `translate3d(0, ${Math.min(scrollY * 0.22, 170)}px, 0) scale(1.02)`;
+
+      if (detailImage) {
+        const rect = detailImage.parentElement.getBoundingClientRect();
+        const offset = (rect.top - window.innerHeight / 2) * -0.075;
+        detailImage.style.transform = `translate3d(0, ${Math.max(-35, Math.min(35, offset))}px, 0)`;
+      }
+      parallaxTicking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!parallaxTicking) {
+        window.requestAnimationFrame(updateParallax);
+        parallaxTicking = true;
+      }
+    }, { passive: true });
+    window.addEventListener("resize", updateParallax);
+    reduceMotion.addEventListener?.("change", updateParallax);
 
     // Menu mobile
     const menuToggle = document.getElementById("menuToggle");
